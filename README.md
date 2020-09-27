@@ -14,7 +14,7 @@
 * express-handlebars: 5.1.0
 
 ## 使用方式
-1. 在terminal 輸入git clone https://github.com/Kaikai8888/Restaurant_List.git，下載專案資料夾 
+1. 在terminal 輸入git clone https://github.com/Kaikai8888/restaurant_list_2.git，下載專案資料夾 
 
 2. 在terminal 輸入 nodemon app.js，透過nodemon執行app.js，啟動local server監聽 
 
