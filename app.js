@@ -19,9 +19,18 @@ app.use(express.static('public'))
 app.get('/', (req, res) => {
   res.render('index', { restaurants: restaurants.results })
 })
+
 app.get('/restaurants/:id', (req, res) => {
   res.render('show', { restaurant: restaurantsObject[req.params.id] })
 })
+
+app.get('/search', (req, res) => {
+  const keyword = req.query.keyword.trim().toLowerCase()
+  const searchResults = restaurants.results.filter(item => item.name.toLowerCase().includes(keyword))
+  res.render('index', { restaurants: searchResults, keyword })
+})
+
+
 app.listen(port, () => {
   console.log(`Express is listening on http://localhost:${port}`)
 })
