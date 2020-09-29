@@ -3,9 +3,9 @@ const exphbs = require('express-handlebars')
 const app = express()
 const port = 3000
 const restaurants = require('./restaurant.json')
-const restaurantsObject = restaurants.results.reduce((acc, cur) => {
-  acc[cur.id] = cur
-  return acc
+const restaurantsObject = restaurants.results.reduce((object, restaurant) => {
+  object[restaurant.id] = restaurant
+  return object
 }, {})
 
 //setting template engine
