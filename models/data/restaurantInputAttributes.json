@@ -1,0 +1,17 @@
+{
+  "image": {
+    "type": "url"
+  },
+  "phone": {
+    "type": "tel"
+  },
+  "google_map": {
+    "type": "url"
+  },
+  "rating": {
+    "type": "number",
+    "min": "0",
+    "max": "5",
+    "value": "0"
+  }
+}

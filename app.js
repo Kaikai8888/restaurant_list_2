@@ -6,13 +6,8 @@ const Restaurant = require('./models/restaurant.js')
 //server related variables
 const app = express()
 const port = 3000
-
-// const restaurants = require('./restaurant.json')
-// const restaurantsObject = restaurants.results.reduce((object, restaurant) => {
-//   object[restaurant.id] = restaurant
-//   return object
-// }, {})
-
+//other variables
+const restaurantInputAttributes = require('./models/data/restaurantInputAttributes.json')
 
 //database setting
 mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true })
@@ -22,7 +17,14 @@ db.once('open', () => console.log('MongoDB connect!'))
 
 //web server setting
 //setting template engine
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
+app.engine('handlebars', exphbs({
+  defaultLayout: 'main',
+  helpers: {
+    getByKey: function (object, key) {
+      return object[key]
+    },
+  }
+}))
 app.set('view engine', 'handlebars')
 //setting static files
 app.use(express.static('public'))
@@ -33,10 +35,17 @@ app.get('/', (req, res) => {
   Restaurant.find()
     .lean()
     .then(restaurants => {
-      res.render('index', { restaurants })
+      res.render('index', { restaurants, isIndex: true })
     })
     .catch(error => console.error(error))
 })
+
+//add new restaurant
+app.get('/restaurants/new', (req, res) => {
+  const properties = Restaurant.schema.paths
+  res.render('new', { properties, restaurantInputAttributes })
+})
+
 //detail page
 app.get('/restaurants/:id', (req, res) => {
   const id = req.params.id
@@ -45,6 +54,7 @@ app.get('/restaurants/:id', (req, res) => {
     .then(restaurant => res.render('show', { restaurant }))
     .catch(error => console.error(error))
 })
+
 //search function
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword.trim().toLowerCase()
@@ -55,11 +65,14 @@ app.get('/search', (req, res) => {
         ['name', 'name_en', 'category'].find(key =>
           item[key].toLowerCase().includes(keyword)
         ))
-      res.render('index', { restaurants: searchResults, keyword })
+      res.render('index', { restaurants: searchResults, isIndex: true, keyword })
     })
 })
+
 
 //run web server
 app.listen(port, () => {
   console.log(`Express is listening on http://localhost:${port}`)
 })
+
+console.log(Restaurant.schema.paths.name_en.isRequired)

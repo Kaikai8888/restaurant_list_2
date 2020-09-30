@@ -1,5 +1,5 @@
 //require packages and data
-const restaurantSeeds = require('../../restaurant.json').results
+const restaurantSeeds = require('../data/restaurant.json').results
 const mongoose = require('mongoose')
 const Restaurant = require('../restaurant.js')
 

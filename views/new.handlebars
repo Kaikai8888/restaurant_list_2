@@ -1,0 +1,18 @@
+<div class="container new-edit-form">
+  <form action="/restaurants/new" method="POST">
+    {{#each properties}}
+    <div class="form-group row">
+      <label for="{{ @key }}" class="col-sm-3 col-form-label">{{ @key }}
+        {{#if this.isRequired}}
+        <span style="color: red">*</span>
+        {{/if}}
+      </label>
+      <div class="col-sm-9">
+        <input class="form-control" id="{{ @key }}" name={{ @key }}
+          {{#each (getByKey ../restaurantInputAttributes @key)}} {{ @key }}={{ this }} {{else}} type="text" {{/each}}>
+      </div>
+    </div>
+    {{/each}}
+
+  </form>
+</div>
