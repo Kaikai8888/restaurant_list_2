@@ -28,6 +28,7 @@ app.set('view engine', 'handlebars')
 app.use(express.static('public'))
 
 //setting routes
+//home page
 app.get('/', (req, res) => {
   Restaurant.find()
     .lean()
@@ -36,7 +37,7 @@ app.get('/', (req, res) => {
     })
     .catch(error => console.error(error))
 })
-
+//detail page
 app.get('/restaurants/:id', (req, res) => {
   const id = req.params.id
   Restaurant.findById(id)
@@ -44,12 +45,19 @@ app.get('/restaurants/:id', (req, res) => {
     .then(restaurant => res.render('show', { restaurant }))
     .catch(error => console.error(error))
 })
-
-// app.get('/search', (req, res) => {
-//   const keyword = req.query.keyword.trim().toLowerCase()
-//   const searchResults = restaurants.results.filter(item => item.name.toLowerCase().includes(keyword))
-//   res.render('index', { restaurants: searchResults, keyword })
-// })
+//search function
+app.get('/search', (req, res) => {
+  const keyword = req.query.keyword.trim().toLowerCase()
+  Restaurant.find()
+    .lean()
+    .then(restaurants => {
+      const searchResults = restaurants.filter(item =>
+        ['name', 'name_en', 'category'].find(key =>
+          item[key].toLowerCase().includes(keyword)
+        ))
+      res.render('index', { restaurants: searchResults, keyword })
+    })
+})
 
 //run web server
 app.listen(port, () => {
