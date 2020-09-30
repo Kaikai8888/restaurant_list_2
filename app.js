@@ -37,9 +37,13 @@ app.get('/', (req, res) => {
     .catch(error => console.error(error))
 })
 
-// app.get('/restaurants/:id', (req, res) => {
-//   res.render('show', { restaurant: restaurantsObject[req.params.id] })
-// })
+app.get('/restaurants/:id', (req, res) => {
+  const id = req.params.id
+  Restaurant.findById(id)
+    .lean()
+    .then(restaurant => res.render('show', { restaurant }))
+    .catch(error => console.error(error))
+})
 
 // app.get('/search', (req, res) => {
 //   const keyword = req.query.keyword.trim().toLowerCase()
