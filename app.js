@@ -1,13 +1,25 @@
+//require related packages
 const express = require('express')
 const exphbs = require('express-handlebars')
+const mongoose = require('mongoose')
+//server related variables
 const app = express()
 const port = 3000
+
 const restaurants = require('./restaurant.json')
 const restaurantsObject = restaurants.results.reduce((object, restaurant) => {
   object[restaurant.id] = restaurant
   return object
 }, {})
 
+
+//database setting
+mongoose.connect('mongodb://localhost/restaurant-list')
+const db = mongoose.connection
+db.on('error', () => console.log('MongoDB error!'))
+db.once('open', () => console.log('MongoDB connect!'))
+
+//web server setting
 //setting template engine
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
