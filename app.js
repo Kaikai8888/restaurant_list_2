@@ -79,6 +79,16 @@ app.get('/search', (req, res) => {
     })
 })
 
+//edit restaurant data
+app.get('/restaurants/:id/edit', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .lean()
+    .then(restaurant => res.render('edit', { restaurant, properties, formAttributes }))
+    .catch(error => console.error(error))
+})
+
+
 
 //run web server
 app.listen(port, () => {
