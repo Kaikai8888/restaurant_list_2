@@ -77,6 +77,7 @@ app.get('/search', (req, res) => {
         ))
       res.render('index', { restaurants: searchResults, isIndex: true, keyword })
     })
+    .catch(error => console.error)
 })
 
 //edit restaurant data
