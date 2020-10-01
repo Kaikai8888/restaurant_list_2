@@ -9,6 +9,7 @@ const app = express()
 const port = 3000
 //other variables
 const formAttributes = require('./models/data/restaurantFormAttributes.json')
+const properties = Restaurant.schema.paths
 
 //database setting
 mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true })
@@ -22,7 +23,8 @@ app.engine('handlebars', exphbs({
   defaultLayout: 'main',
   helpers: {
     getByKey: (object, key) => object[key],
-    eq: (a, b) => a === b
+    eq: (a, b) => a === b,
+    or: (a, b) => a || b
   }
 }))
 app.set('view engine', 'handlebars')
@@ -44,9 +46,6 @@ app.get('/', (req, res) => {
 
 //add new restaurant
 app.get('/restaurants/new', (req, res) => {
-  const properties = Restaurant.schema.paths
-  delete properties._id
-  delete properties.__v
   res.render('new', { properties, formAttributes })
 })
 
