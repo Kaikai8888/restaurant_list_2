@@ -17,7 +17,7 @@
 </div>
 
 <!-- restaurant list -->
-<div class="container mt-5">
+<div class="container mt-5 data-display-area">
   <div class="row">
     <div class="col-md-10 col-12 mx-auto">
       <div class="card-columns">
@@ -44,8 +44,9 @@
             <div class="d-flex justify-content-end">
               <a href="/restaurants/{{ this._id }}/edit" class="btn btn-info mr-2">編輯</a>
 
-              <form action="/restaurants/{{ this._id }}/delete" method="POST" style="display: inline;">
-                <button class="btn btn-danger">刪除</button>
+              <form action="/restaurants/{{ this._id }}/delete" method="POST" style="display: inline;"
+                onsubmit="return confirm('確定要刪除「{{ this.name }}」嗎?')">
+                <button class="btn btn-danger delete-btn">刪除</button>
               </form>
             </div>
           </div>

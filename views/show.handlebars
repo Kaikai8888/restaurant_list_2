@@ -1,5 +1,5 @@
 <h1 class="mb-1 restaurant-show-title">{{ restaurant.name }}</h1>
-<div class="container">
+<div class="container data-display-area">
   <div class="row">
     <div class="col-12 col-md-10 mx-auto">
 
@@ -37,12 +37,13 @@
       <div class="mb-5 d-flex justify-content-end">
         <a href="/restaurants/{{ restaurant._id }}/edit" class="btn btn-info mr-2">編輯</a>
 
-        <form action="/restaurants/{{ restaurant._id }}/delete" method="POST" style="display: inline;">
-          <button class="btn btn-danger">刪除</button>
+        <form action="/restaurants/{{ restaurant._id }}/delete" method="POST" style="display: inline;"
+          onsubmit="return confirm('確定要刪除「{{ restaurant.name }}」嗎?')">
+          <button class="btn btn-danger delete-btn">刪除</button>
         </form>
       </div>
 
-      <img class="rounded mx-auto d-block mb-4 w-100" src="{{ restaurant.image }}" alt="{{ restaurant.name }}"
+      <img class=" rounded mx-auto d-block mb-4 w-100" src="{{ restaurant.image }}" alt="{{ restaurant.name }}"
         style="max-width: 600px;">
     </div>
   </div>
