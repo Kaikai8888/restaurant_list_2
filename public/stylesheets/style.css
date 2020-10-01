@@ -23,19 +23,21 @@ header {
 .search-bar .search-bar-outer, .new-edit-form{
   margin: 0 auto;
   max-width: 680px;
-  background-color: #fce2cf;
-  border-radius: 8px;
-  padding: 20px 30px;
+  border-radius: 8px; 
   border: 0;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .search-bar .search-bar-outer {
   margin-top: -60px;
+  padding: 20px 30px;
+  background-color: rgb(252, 226, 207);
 }
 
 .new-edit-form {
-  margin-top: -150px;
+  margin-top: -180px;
+  padding: 30px 50px;
+  background-color: rgba(252,226,207,0.7);
 }
 
 

@@ -1,0 +1,30 @@
+{
+  "chinese": {
+    "name": "店名",
+    "name_en": "英文店名",
+    "category": "類別",
+    "image": "圖片網址",
+    "location": "地址",
+    "phone": "電話",
+    "google_map": "google地圖連結",
+    "rating": "評分",
+    "description": "介紹"
+  },
+  "input": {
+    "image": {
+      "type": "url"
+    },
+    "phone": {
+      "type": "tel"
+    },
+    "google_map": {
+      "type": "url"
+    },
+    "rating": {
+      "type": "number",
+      "min": "0",
+      "max": "5",
+      "value": "0"
+    }
+  }
+}

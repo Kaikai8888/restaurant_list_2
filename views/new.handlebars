@@ -1,18 +1,24 @@
 <div class="container new-edit-form">
+  <h3 class="mb-4 text-center" style="letter-spacing: 2px;font-weight: 900;">新增餐廳</h3>
   <form action="/restaurants/new" method="POST">
     {{#each properties}}
-    <div class="form-group row">
-      <label for="{{ @key }}" class="col-sm-3 col-form-label">{{ @key }}
+    <div class="form-group row align-items-center">
+      <label for="{{ @key }}" class="col-sm-4 col-form-label" style="font-size: 20px;font-weight: 700;">
+        {{getByKey ../formAttributes.chinese @key}}
         {{#if this.isRequired}}
         <span style="color: red">*</span>
         {{/if}}
       </label>
-      <div class="col-sm-9">
-        <input class="form-control" id="{{ @key }}" name={{ @key }}
-          {{#each (getByKey ../restaurantInputAttributes @key)}} {{ @key }}={{ this }} {{else}} type="text" {{/each}}>
+      <div class="col-sm-8">
+        <input class="form-control" id="{{ @key }}" name={{ @key }} {{#each (getByKey ../formAttributes.input @key)}}
+          {{ @key }}={{ this }} {{else}} type="text" {{/each}}>
       </div>
     </div>
     {{/each}}
+    <div class="row justify-content-end">
+      <button type="submit" class="btn btn-warning"
+        style="font-size: 20px; font-weight: 700; margin-right: 15px;">新增</button>
+    </div>
 
   </form>
 </div>

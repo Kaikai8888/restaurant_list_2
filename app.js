@@ -7,7 +7,7 @@ const Restaurant = require('./models/restaurant.js')
 const app = express()
 const port = 3000
 //other variables
-const restaurantInputAttributes = require('./models/data/restaurantInputAttributes.json')
+const formAttributes = require('./models/data/restaurantFormAttributes.json')
 
 //database setting
 mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true })
@@ -43,7 +43,9 @@ app.get('/', (req, res) => {
 //add new restaurant
 app.get('/restaurants/new', (req, res) => {
   const properties = Restaurant.schema.paths
-  res.render('new', { properties, restaurantInputAttributes })
+  delete properties._id
+  delete properties.__v
+  res.render('new', { properties, formAttributes })
 })
 
 //detail page
@@ -75,4 +77,3 @@ app.listen(port, () => {
   console.log(`Express is listening on http://localhost:${port}`)
 })
 
-console.log(Restaurant.schema.paths.name_en.isRequired)
