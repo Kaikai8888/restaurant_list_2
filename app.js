@@ -68,13 +68,11 @@ app.get('/restaurants/:id', (req, res) => {
 //search function
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword.trim().toLowerCase()
-  Restaurant.find()
+  const regExp = new RegExp(`${keyword}`)
+  Restaurant.find({ $or: [{ name: regExp }, { name_en: regExp }, { category: regExp }] })
     .lean()
     .then(restaurants => {
-      const searchResults = restaurants.filter(item =>
-        ['name', 'name_en', 'category'].find(key =>
-          item[key].toLowerCase().includes(keyword)
-        ))
+      const searchResults = restaurants
       res.render('index', { restaurants: searchResults, isIndex: true, keyword })
     })
     .catch(error => console.error)
