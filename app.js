@@ -2,6 +2,7 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
 const Restaurant = require('./models/restaurant.js')
 //server related variables
 const app = express()
@@ -27,6 +28,8 @@ app.engine('handlebars', exphbs({
 app.set('view engine', 'handlebars')
 //setting static files
 app.use(express.static('public'))
+//setting body parser
+app.use(bodyParser.urlencoded({ extended: true }))
 
 //setting routes
 //home page
@@ -46,9 +49,12 @@ app.get('/restaurants/new', (req, res) => {
   delete properties.__v
   res.render('new', { properties, formAttributes })
 })
+
 app.post('/restaurants/new', (req, res) => {
   const input = req.body
-  console.log(req.body)
+  return Restaurant.create(input)
+    .then(res.redirect('/'))
+    .catch(error => console.error(error))
 })
 
 //detail page
