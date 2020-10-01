@@ -10,8 +10,13 @@
         {{/if}}
       </label>
       <div class="col-sm-8">
+        {{#if (eq @key "description")}}
+        <textarea class="form-control" id="{{ @key }}" name={{ @key }} {{#each (getByKey ../formAttributes.input @key)}}
+          {{ @key }}={{ this }} {{else}} type="text" {{/each}}></textarea>
+        {{else}}
         <input class="form-control" id="{{ @key }}" name={{ @key }} {{#each (getByKey ../formAttributes.input @key)}}
-          {{ @key }}={{ this }} {{else}} type="text" {{/each}}>
+          {{ @key }}={{ this }} {{else}} type="text" {{/each}} {{#if this.isRequired}}required{{/if}}>
+        {{/if}}
       </div>
     </div>
     {{/each}}
@@ -19,6 +24,5 @@
       <button type="submit" class="btn btn-warning"
         style="font-size: 20px; font-weight: 700; margin-right: 15px;">新增</button>
     </div>
-
   </form>
 </div>

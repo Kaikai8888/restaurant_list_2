@@ -20,9 +20,8 @@ db.once('open', () => console.log('MongoDB connect!'))
 app.engine('handlebars', exphbs({
   defaultLayout: 'main',
   helpers: {
-    getByKey: function (object, key) {
-      return object[key]
-    },
+    getByKey: (object, key) => object[key],
+    eq: (a, b) => a === b
   }
 }))
 app.set('view engine', 'handlebars')
@@ -46,6 +45,10 @@ app.get('/restaurants/new', (req, res) => {
   delete properties._id
   delete properties.__v
   res.render('new', { properties, formAttributes })
+})
+app.post('/restaurants/new', (req, res) => {
+  const input = req.body
+  console.log(req.body)
 })
 
 //detail page

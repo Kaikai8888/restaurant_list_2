@@ -15,7 +15,9 @@
       "type": "url"
     },
     "phone": {
-      "type": "tel"
+      "type": "tel",
+      "pattern": "([0-9]|\\s)*",
+      "placeholder": "請輸入數字，並可穿插空格"
     },
     "google_map": {
       "type": "url"
@@ -24,7 +26,29 @@
       "type": "number",
       "min": "0",
       "max": "5",
-      "value": "0"
+      "value": "0",
+      "step": "0.1",
+      "title": "請輸入0-5的數字，最小單位可到小數點後一位"
+    },
+    "description": {
+      "rows": "4",
+      "maxlength": "500",
+      "placeholder": "上限500字"
+    },
+    "name": {
+      "type": "text",
+      "maxlength": "50",
+      "placeholder": "上限50字"
+    },
+    "name_en": {
+      "type": "text",
+      "maxlength": "50",
+      "placeholder": "上限50字"
+    },
+    "category": {
+      "type": "text",
+      "maxlength": "20",
+      "placeholder": "上限20字"
     }
   }
 }
