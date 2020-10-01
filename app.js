@@ -89,6 +89,17 @@ app.get('/restaurants/:id/edit', (req, res) => {
     .catch(error => console.error(error))
 })
 
+app.post('/restaurants/:id/edit', (req, res) => {
+  const id = req.params.id
+  const input = req.body
+  return Restaurant.findById(id)
+    .then(restaurant => {
+      Object.entries(input).forEach(entry => restaurant[entry[0]] = entry[1])
+      return restaurant.save()
+    })
+    .then(() => res.redirect(`/restaurants/${id}`))
+    .catch(error => console.error(error))
+})
 
 
 //run web server
