@@ -37,7 +37,7 @@
       <div class="mb-5 d-flex justify-content-end">
         <a href="/restaurants/{{ restaurant._id }}/edit" class="btn btn-info mr-2">編輯</a>
 
-        <form action="/restaurants/{{ restaurant._id }}/delete" method="POST" style="display: inline;"
+        <form action="/restaurants/{{ restaurant._id }}?_method=DELETE" method="POST" style="display: inline;"
           onsubmit="return confirm('確定要刪除「{{ restaurant.name }}」嗎?')">
           <button class="btn btn-danger delete-btn">刪除</button>
         </form>

@@ -1,6 +1,6 @@
 <div class="container new-edit-form">
   <h3 class="mb-4 text-center" style="letter-spacing: 2px;font-weight: 900;">編輯餐廳</h3>
-  <form action="/restaurants/{{ restaurant._id }}/edit" method="POST">
+  <form action="/restaurants/{{ restaurant._id }}?_method=PUT" method="POST">
     {{#each properties}}
     {{#unless (or (eq @key '_id') (eq @key '__v'))}}
     <div class="form-group row align-items-center">
