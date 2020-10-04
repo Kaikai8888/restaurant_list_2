@@ -1,8 +1,9 @@
 {
-  "": "排序...",
+  "": "排序: (無)",
   "name_asc": "店名: A - Z",
   "name_desc": "店名: Z - A",
-  "category_asc": "類別",
+  "category_asc": "類別: A - Z",
+  "category_desc": "類別: Z - A",
   "rating_desc": "評分: 高 - 低",
   "rating_asc": "評分: 低 - 高"
 }
