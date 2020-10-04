@@ -1,13 +1,16 @@
 const express = require('express')
 const router = express.Router()
+
 const Restaurant = require('../../models/restaurant.js')
 
 //show all restaurants
 router.get('/', (req, res) => {
+  const [sortCondition, sortConditionString] = generateSortCondition(req.query)
   Restaurant.find()
+    .sort(sortCondition)
     .lean()
     .then(restaurants => {
-      res.render('index', { restaurants, isIndex: true })
+      res.render('index', { restaurants, isIndex: true, sortConditionString })
     })
     .catch(error => console.error(error))
 })
@@ -27,3 +30,23 @@ router.get('/search', (req, res) => {
 
 
 module.exports = router
+
+
+function generateSortCondition(query) {
+  const { sortProperty, sortOrder } = query
+  let sortCondition = {}
+  let sortConditionString = ''
+
+  switch (sortProperty) {
+    case 'name':
+      sortCondition[sortProperty] = sortOrder
+      sortConditionString = sortOrder === 'asc' ? '排序: 店名 A - Z' : '排序: 店名 Z - A'
+      break
+    case 'category':
+      sortCondition[sortProperty] = 'asc'
+      sortConditionString = '排序: 類別'
+      break
+  }
+
+  return [sortCondition, sortConditionString]
+}

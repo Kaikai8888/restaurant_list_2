@@ -1,17 +1,33 @@
 <!-- search bar -->
 <div class="container search-bar">
   <div class="search-bar-outer">
-    <div class="search-bar-inner">
-      <form action="/search" method="GET">
-        <h4 class="mb-2">尋找餐廳：</h4>
-        <div class="input-group">
-          <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
-            value="{{keyword}}" aria-describedby="search-button">
-          <div class="input-group-append">
-            <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+    <div class="wrapper d-flex align-items-center justify-content-between">
+      <div class="search-bar-inner">
+        <form action="/search" method="GET">
+          <div class="input-group">
+            <input type="text" name="keyword" class="form-control" placeholder="搜尋餐廳、分類" aria-label="Restaurant Name..."
+              value="{{keyword}}" aria-describedby="search-button">
+            <div class="input-group-append">
+              <button class="btn btn-info" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div id="sort-dropdown">
+        <div class="dropdown show">
+          <a class="btn btn-info dropdown-toggle" href="#" role="button" id="sort-menu" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            {{#if sortConditionString}} {{ sortConditionString }} {{else}} 排序 {{/if}}
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="sort-menu">
+            <a class="dropdown-item" href="/?sortProperty=name&sortOrder=asc">店名: A - Z</a>
+            <a class="dropdown-item" href="/?sortProperty=name&sortOrder=desc">店名: Z - A</a>
+            <a class="dropdown-item" href="/?sortProperty=category">類別</a>
           </div>
         </div>
-      </form>
+      </div>
     </div>
   </div>
 </div>
@@ -20,9 +36,9 @@
 <div class="container mt-5 data-display-area">
   <div class="row">
     <div class="col-md-10 col-12 mx-auto">
-      <div class="card-columns">
+      <div class="card-wrapper">
         {{#each restaurants}}
-        <div class="card mb-3">
+        <div class="card mr-1 mb-3">
           <a href="/restaurants/{{this._id}}" class="text-secondary">
 
             <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
@@ -51,10 +67,7 @@
             </div>
           </div>
         </div>
-
-
         {{/each}}
-
       </div>
     </div>
   </div>

@@ -26,23 +26,23 @@ header {
   border-radius: 8px; 
   border: 0;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  background-color: rgba(252,226,207,0.7);
 }
 
 .search-bar .search-bar-outer {
   margin-top: -60px;
   padding: 20px 30px;
-  background-color: rgb(252, 226, 207);
 }
 
 .new-edit-form {
   margin-top: -180px;
   padding: 30px 50px;
-  background-color: rgba(252,226,207,0.7);
 }
 
 
-.search-bar .search-bar-inner h4 {
+.search-bar h2 {
   color: #9b4b4b;
+  margin-bottom: 30px;
 }
 
 .form-control::placeholder {
@@ -50,18 +50,28 @@ header {
   font-size: 0.8rem;
 }
 
-.btn-major {
+/* .btn-major {
   background-color: #9b4b4b;
   color: white;
-}
+} */
 
 .form-control:focus {
   box-shadow: none;
   border-color: #ced4da;
 }
 
+
+.card-wrapper {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 10px 10px;
+  justify-content: space-between;
+  align-content: space-between;
+}
+
 .card {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
 }
 
 .card img{
