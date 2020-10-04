@@ -20,6 +20,10 @@ header {
   filter: blur(3px);
 }
 
+#search-sort-form label{
+  font-weight: 700;
+  font-size: 20px;
+}
 .search-bar .search-bar-outer, .new-edit-form{
   margin: 0 auto;
   max-width: 680px;
