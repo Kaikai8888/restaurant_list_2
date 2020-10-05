@@ -4,7 +4,7 @@ const Restaurant = require('../../models/restaurant.js')
 //other variables
 const formAttributes = require('../../models/data/restaurantFormAttributes.json')
 const properties = Restaurant.schema.paths
-
+const getFormErrorMessage = require('../../models/functions/getFormErrorMessage.js')
 
 //add new restaurant
 router.get('/new', (req, res) => {
@@ -15,7 +15,7 @@ router.post('/', (req, res) => {
   const input = req.body
   return Restaurant.create(input)
     .then(res.redirect('/'))
-    .catch(error => console.error(error))
+    .catch(error => res.send(getFormErrorMessage(error)))
 })
 
 //detail page
@@ -39,13 +39,18 @@ router.get('/:id/edit', (req, res) => {
 router.put('/:id', (req, res) => {
   const id = req.params.id
   const input = req.body
+
   return Restaurant.findById(id)
     .then(restaurant => {
       Object.assign(restaurant, input)
       return restaurant.save()
     })
     .then(() => res.redirect(`/restaurants/${id}`))
-    .catch(error => console.error(error))
+    .catch(error => {
+      console.log(error)
+      res.send(getFormErrorMessage(error))
+    })
+
 })
 
 //delete

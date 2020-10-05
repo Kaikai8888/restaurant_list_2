@@ -14,13 +14,13 @@
       </label>
       <div class="col-sm-8">
         {{#if (eq @key "description")}}
-        <textarea class="form-control" id="{{ @key }}" name={{ @key }} {{#each (getByKey ../formAttributes.input @key)}}
-          {{#unless (eq @key 'value')}} {{ @key }}={{ this }} {{/unless}} {{else}}type="text"
-          {{/each}}>{{ getByKey ../restaurant @key }}</textarea>
+        <textarea class="form-control" id="{{ @key }}" name="{{ @key }}"
+          {{#each (getByKey ../formAttributes.input @key)}} {{#unless (eq @key 'value')}} {{ @key }}="{{ this }}"
+          {{/unless}} {{else}}type="text" {{/each}}>{{ getByKey ../restaurant @key }}</textarea>
 
         {{else}}
-        <input class="form-control" id="{{ @key }}" name={{ @key }} value="{{getByKey ../restaurant @key}}"
-          {{#each (getByKey ../formAttributes.input @key)}} {{#unless (eq @key 'value')}} {{ @key }}={{ this }}
+        <input class="form-control" id="{{ @key }}" name="{{ @key }}" value="{{getByKey ../restaurant @key}}"
+          {{#each (getByKey ../formAttributes.input @key)}} {{#unless (eq @key 'value')}} {{ @key }}="{{ this }}"
           {{/unless}} {{else}}type="text" {{/each}} {{#if this.isRequired}}required{{/if}}>
         {{/if}}
 

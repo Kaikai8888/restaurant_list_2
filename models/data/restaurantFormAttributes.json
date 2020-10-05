@@ -16,8 +16,8 @@
     },
     "phone": {
       "type": "tel",
-      "pattern": "([0-9]|\\s)*",
-      "placeholder": "請輸入數字，並可穿插空格"
+      "pattern": "(0\\d\\s\\d{3,4}\\s\\d{4})|(09\\d\\d\\s\\d{3}\\s\\d{3})",
+      "placeholder": "市話: 0X XXXX XXXX 、手機: 09XX XXX XXX"
     },
     "google_map": {
       "type": "url"
@@ -28,7 +28,7 @@
       "max": "5",
       "value": "0",
       "step": "0.1",
-      "title": "請輸入0-5的數字，最小單位可到小數點後一位"
+      "title": "請輸入0-5的數字，可到小數點下一位"
     },
     "description": {
       "rows": "4",
