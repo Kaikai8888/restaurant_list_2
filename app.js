@@ -10,7 +10,7 @@ const app = express()
 const port = 3000
 
 //web server setting
-app.engine('handlebars', exphbs({
+app.engine('hbs', exphbs({
   defaultLayout: 'main',
   extname: '.hbs',
   helpers: require('./utils/hbsHelpers.js')
