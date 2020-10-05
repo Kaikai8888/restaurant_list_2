@@ -12,7 +12,8 @@
   },
   "input": {
     "image": {
-      "type": "url"
+      "type": "url",
+      "placeholder": "https:// 或 http: 開頭"
     },
     "phone": {
       "type": "tel",
@@ -20,7 +21,8 @@
       "placeholder": "市話: 0X XXXX XXXX 、手機: 09XX XXX XXX"
     },
     "google_map": {
-      "type": "url"
+      "type": "url",
+      "placeholder": "https://goo.gl/maps/....."
     },
     "rating": {
       "type": "number",
