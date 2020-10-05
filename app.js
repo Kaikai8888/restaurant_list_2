@@ -12,9 +12,10 @@ const port = 3000
 //web server setting
 app.engine('handlebars', exphbs({
   defaultLayout: 'main',
+  extname: '.hbs',
   helpers: require('./utils/hbsHelpers.js')
 }))
-app.set('view engine', 'handlebars')
+app.set('view engine', 'hbs')
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
