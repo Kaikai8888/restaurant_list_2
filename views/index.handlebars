@@ -15,7 +15,7 @@
           </div>
         </div>
         <div class="form-group col-6 ">
-          <label for="sortdropdown">排序:</label>
+          <label for="sort-dropdown">排序:</label>
           <select id="sort-dropdown" class="form-control" name="sort">
             {{#each sortConditionMapping}}
             <option value="{{@key}}" {{#if (eq @key ../sort)}} selected {{/if}}> {{ this }}</option>

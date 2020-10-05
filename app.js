@@ -12,11 +12,7 @@ const port = 3000
 //web server setting
 app.engine('handlebars', exphbs({
   defaultLayout: 'main',
-  helpers: {
-    getByKey: (object, key) => object[key],
-    eq: (a, b) => a === b,
-    or: (a, b) => a || b
-  }
+  helpers: require('./utils/hbsHelpers.js')
 }))
 app.set('view engine', 'handlebars')
 app.use(express.static('public'))
