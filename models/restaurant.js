@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 const restaurantSchema = new Schema({
   name: { type: String, required: true, maxlength: 50 },
   name_en: { type: String, required: false },
-  category: { type: String, required: true, maxlength: 20 },
+  category: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'Category' },
   image: { type: String, required: true, match: [/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/, 'Invalid image url'] },
   location: { type: String, required: true },
   phone: {
