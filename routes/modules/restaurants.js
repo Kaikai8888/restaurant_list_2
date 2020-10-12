@@ -20,22 +20,20 @@ router.get('/new', (req, res) => {
 
 router.post('/', (req, res) => {
   const input = req.body
-  if (input.category) {
-    delete input['category-name']
-    Restaurant.create(input)
-      .then(res.redirect('/'))
-      .catch(error => res.send(getFormErrorMessage(error)))
-  } else {
-    Category.create({ name: input['category-name'] })
-      .then(category => {
-        input.category = category._id
-        Restaurant.create(input)
-          .then(res.redirect('/'))
-          .catch(error => res.send(getFormErrorMessage(error)))
-      })
-      .catch(error => console.error(error))
-  }
+  Category.find({ name: input.category })
+    .lean()
+    .then(category => {
+      if (category.length === 0) {
+        Category.create({ name: input.category })
+          .then(category => createNewRestaurant(res, input, category))
+          .catch(error => console.error(error))
+      } else {
+        createNewRestaurant(res, input, category[0])
+      }
+    })
 })
+
+
 
 //detail page
 router.get('/:id', (req, res) => {
@@ -65,9 +63,25 @@ router.get('/:id/edit', (req, res) => {
 router.put('/:id', (req, res) => {
   const id = req.params.id
   const input = req.body
-  delete input['category-name']
-  return Restaurant.findById(id)
+  Category.find({ name: input.category })
+    .lean()
+    .then(category => {
+      if (category.length === 0) {
+        Category.create({ name: input.category })
+          .then(category => editRestaurant(res, input, category, id))
+          .catch(error => console.error(error))
+      } else {
+        editRestaurant(res, input, category[0], id)
+      }
+
+
+    })
+})
+
+function editRestaurant(res, input, category, id) {
+  Restaurant.findById(id)
     .then(restaurant => {
+      input.category = category._id
       Object.assign(restaurant, input)
       return restaurant.save()
     })
@@ -76,8 +90,7 @@ router.put('/:id', (req, res) => {
       console.log(error)
       res.send(getFormErrorMessage(error))
     })
-
-})
+}
 
 //delete
 router.delete('/:id', (req, res) => {
@@ -89,3 +102,11 @@ router.delete('/:id', (req, res) => {
 })
 
 module.exports = router
+
+//function
+function createNewRestaurant(res, input, category) {
+  input.category = category._id
+  Restaurant.create(input)
+    .then(res.redirect('/'))
+    .catch(error => res.send(getFormErrorMessage(error)))
+}

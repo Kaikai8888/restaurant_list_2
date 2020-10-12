@@ -20,11 +20,10 @@
 
         {{else}}
         {{#if (eq @key "category")}}
-        <input type="text" class="form-control" id="category-name" name="category-name"
-          value="{{ ../restaurant.category.name }}" autocomplete="off" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false" placeholder="搜尋現有類別 / 新增新類別" {{#each (getByKey ../formAttributes.input @key)}}
-          {{ @key }}="{{ this }}" {{/each}} required />
-        <input type="hidden" id="category-id" name="category" value="{{ ../restaurant.category._id }}" required />
+        <input type="text" class="form-control" id="category" name="category" value="{{ ../restaurant.category.name }}"
+          autocomplete="off" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+          placeholder="搜尋現有類別 / 新增新類別" {{#each (getByKey ../formAttributes.input @key)}} {{ @key }}="{{ this }}"
+          {{/each}} required />
         <div class="dropdown-menu" id="category-dropdown">
           {{#each ../categories}}
           <a class="dropdown-item" href="#" data-id="{{ this._id }}">{{ this.name }}</a>

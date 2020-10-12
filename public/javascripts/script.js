@@ -1,7 +1,6 @@
 const sortDropdown = document.querySelector('#sort-dropdown')
 const searchSortForm = document.querySelector('#search-sort-form')
-const categoryNameInput = document.querySelector('.new-edit-form #category-name')
-const categoryIdInput = document.querySelector('.new-edit-form #category-id')
+const categoryNameInput = document.querySelector('.new-edit-form #category')
 const categoryDropdown = document.querySelector('.new-edit-form #category-dropdown')
 
 
@@ -13,13 +12,14 @@ if (sortDropdown) {
 }
 
 //New, Edit form page: categoryDropDown
-if (categoryDropdown && categoryNameInput && categoryIdInput) {
+if (categoryDropdown && categoryNameInput) {
   categoryDropdown.addEventListener('click', function onCategoryDropdownClick(event) {
+    categoryNameInput.innerText = ''
     categoryNameInput.value = event.target.innerText
-    categoryIdInput.value = event.target.dataset.id
+    // categoryIdInput.value = event.target.dataset.id
   })
   // categoryNameInput.addEventListener('keyup', function onCategoryKeyUp(event) {
-  //   categoryIdInput.value =
+  //   categoryIdInput.value = 
   // })
 }
 
