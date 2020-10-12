@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Restaurant = require('../../models/restaurant.js')
+const Category = require('../../models/category.js')
 //other variables
 const formAttributes = require('../../models/data/restaurantFormAttributes.json')
 const properties = Restaurant.schema.paths
@@ -9,14 +10,31 @@ const getCategoryName = require('../../models/functions/getCategoryName.js')
 
 //add new restaurant
 router.get('/new', (req, res) => {
-  res.render('new', { properties, formAttributes })
+  Category.find()
+    .lean()
+    .then(categories => {
+      res.render('new', { properties, formAttributes, categories })
+    })
+    .catch(error => console.error(error))
 })
 
 router.post('/', (req, res) => {
   const input = req.body
-  return Restaurant.create(input)
-    .then(res.redirect('/'))
-    .catch(error => res.send(getFormErrorMessage(error)))
+  if (input.category) {
+    delete input['category-name']
+    Restaurant.create(input)
+      .then(res.redirect('/'))
+      .catch(error => res.send(getFormErrorMessage(error)))
+  } else {
+    Category.create({ name: input['category-name'] })
+      .then(category => {
+        input.category = category._id
+        Restaurant.create(input)
+          .then(res.redirect('/'))
+          .catch(error => res.send(getFormErrorMessage(error)))
+      })
+      .catch(error => console.error(error))
+  }
 })
 
 //detail page
@@ -32,16 +50,22 @@ router.get('/:id', (req, res) => {
 //edit restaurant data
 router.get('/:id/edit', (req, res) => {
   const id = req.params.id
-  return Restaurant.findById(id)
+  Category.find()
     .lean()
-    .then(restaurant => res.render('edit', { restaurant, properties, formAttributes }))
+    .then(categories => {
+      Restaurant.findById(id)
+        .populate('category')
+        .lean()
+        .then(restaurant => res.render('edit', { restaurant, properties, formAttributes, categories }))
+        .catch(error => console.error(error))
+    })
     .catch(error => console.error(error))
 })
 
 router.put('/:id', (req, res) => {
   const id = req.params.id
   const input = req.body
-
+  delete input['category-name']
   return Restaurant.findById(id)
     .then(restaurant => {
       Object.assign(restaurant, input)
