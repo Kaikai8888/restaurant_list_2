@@ -11,6 +11,7 @@ const getCategoryName = require('../../models/functions/getCategoryName.js')
 //add new restaurant
 router.get('/new', (req, res) => {
   Category.find()
+    .sort({ name: 'asc' })
     .lean()
     .then(categories => {
       res.render('new', { properties, formAttributes, categories })
@@ -49,6 +50,7 @@ router.get('/:id', (req, res) => {
 router.get('/:id/edit', (req, res) => {
   const id = req.params.id
   Category.find()
+    .sort({ name: 'asc' })
     .lean()
     .then(categories => {
       Restaurant.findById(id)
