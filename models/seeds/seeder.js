@@ -18,10 +18,5 @@ db.once('open', () => {
         .catch(error => console.error(error))
     })
     .then(console.log('Complete category seed data creation.'))
-    .catch(error => console.esrror(error))
+    .catch(error => console.error(error))
 })
-
-
-// Restaurant.find()
-//   .populate('category', 'name-_id')
-//   .then(restaurants => console.log(restaurants))

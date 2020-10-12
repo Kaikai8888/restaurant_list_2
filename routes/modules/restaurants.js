@@ -5,6 +5,7 @@ const Restaurant = require('../../models/restaurant.js')
 const formAttributes = require('../../models/data/restaurantFormAttributes.json')
 const properties = Restaurant.schema.paths
 const getFormErrorMessage = require('../../models/functions/getFormErrorMessage.js')
+const getCategoryName = require('../../models/functions/getCategoryName.js')
 
 //add new restaurant
 router.get('/new', (req, res) => {
@@ -22,8 +23,9 @@ router.post('/', (req, res) => {
 router.get('/:id', (req, res) => {
   const id = req.params.id
   Restaurant.findById(id)
+    .populate('category', 'name-_id')
     .lean()
-    .then(restaurant => res.render('show', { restaurant }))
+    .then(restaurant => res.render('show', { restaurant: getCategoryName(restaurant)[0] }))
     .catch(error => console.error(error))
 })
 
