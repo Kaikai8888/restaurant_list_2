@@ -1,20 +1,25 @@
-# 餐廳美食清單
-透過Express建立的簡易餐廳清單，幫助使用者快速查找餐廳，即刻預約享用美食~
+# Restaurant List
+A web app built by Express.js to help users collect and search for restaurants they like.![screenshot](./index_page_screenshot.png)
 
-![screenshot](./index_page_screenshot.png)
+## Features
+* Browsing all restaurants on home page
 
-## 功能描述
-* 在首頁快速瀏覽所有餐廳
+* Clicking on certain restaurant name or image to check detail info, such as address, phone number and description
 
-* 點擊餐廳圖卡，查看更多詳細資訊，包含: 地址、電話、簡介等
+* Searching restaurants by Chinsese name ,English name or category
 
-* 搜尋餐廳中英名稱、類別
+* Sorting restaurants by name, category, ratings
 
-* 新增餐廳資料
+* Creating or Editing restaurants data
 
-* 編輯餐廳資料
+  * Categoric field: searching existing categories or creating new one
+    * Clicking on input field to expand category dropdown list, which 
+    * The category dropdown list contains category name and nubmers of restaurants belong to each category, and is sorted by numbers of restaurants and category name
+    * Entering keywords and the dropdown list will automatically filter and show related categories
+    * Users can also directly input new category, and the system will create new category in the database after form submission and validation
+  * When submitted, the form input will go through  client-end and server-end validation before beigning stored into the data base.
 
-* 刪除餐廳資料 (刪除前會先跳出確認視窗，確認後才會刪除)
+* Deleting specific restaurant data by clicking on delete button, and  a confirm modal will popup before the deletion.
 
   ![新增](./add_restaurant_screenshot.png)
 
@@ -30,9 +35,9 @@
 * mongoose: 5.10.7
 
 ## 使用方式
-1. 在terminal 輸入` git clone https://github.com/Kaikai8888/restaurant_list_2.git `，下載專案資料夾 
-2. 透過robo 3T操作mongoDB， 與本機 `localhost: 27017`建立連線，並建立名稱為`restaurant-list`的資料庫
-3. 在terminal 輸入 `npm run seed`，透過 nodemon 執行 restaurantSeeder.js，建立種子資料
-4. 在terminal 輸入 `npm run dev`，透過 nodemon 執行 app.js，建立資料庫連線，並啟動local server監聽 
-5. 在瀏覽器網址輸入 http://localhost:3000，進入網站
+1. Enter ` git clone https://github.com/Kaikai8888/restaurant_list_2.git ` in the terminal to download the project folder
+2. Use robo 3T to manipulate mongoDB, create connection to `localhost: 27017`, and create the database,`restaurant-list`
+3. Enter `npm run seed` in the terminal to to run restaurantSeeder.js with nodemon and create seed data
+4. Enter `npm run dev` in the terminal to run app.js with nodemon to set up database connection and start  local server 
+5. Enter http://localhost:3000 in the brower and enter the website
 
