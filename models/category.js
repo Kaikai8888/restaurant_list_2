@@ -8,5 +8,12 @@ const categorySchema = new Schema({
   }
 })
 
+categorySchema.virtual('numRestaurants', {
+  ref: 'Restaurant',
+  localField: '_id',
+  foreignField: 'category',
+  count: true
+})
+
 module.exports = mongoose.model('Category', categorySchema)
 

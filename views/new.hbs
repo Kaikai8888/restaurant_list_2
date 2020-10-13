@@ -26,7 +26,8 @@
           {{#if this.isRequired}}required{{/if}} />
         <div class="dropdown-menu" id="category-dropdown">
           {{#each ../categories}}
-          <a class="dropdown-item" href="#" data-id="{{ this._id }}">{{ this.name }}</a>
+          <a class="dropdown-item" href="#" data-name="{{ this.name }}">
+            {{ this.name }} ({{ this.numRestaurants }})</a>
           {{/each}}
         </div>
 

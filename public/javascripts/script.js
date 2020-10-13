@@ -16,7 +16,7 @@ if (sortDropdown) {
 if (categoryDropdown && categoryNameInput) {
   categoryDropdown.addEventListener('click', function onCategoryDropdownClick(event) {
     categoryNameInput.innerText = ''
-    categoryNameInput.value = event.target.innerText
+    categoryNameInput.value = event.target.dataset.name
   })
   categoryNameInput.addEventListener('keyup', function onCategoryKeyUp(event) {
     const keyword = this.value.trim().toLowerCase()
