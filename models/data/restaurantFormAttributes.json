@@ -13,16 +13,21 @@
   "input": {
     "image": {
       "type": "url",
-      "placeholder": "https:// 或 http: 開頭"
+      "placeholder": "https 或 http 開頭",
+      "pattern": "https?://(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)",
+      "title": "https 或 http 開頭"
     },
     "phone": {
       "type": "tel",
       "pattern": "(0\\d\\s\\d{3,4}\\s\\d{4})|(09\\d\\d\\s\\d{3}\\s\\d{3})",
-      "placeholder": "市話: 0X XXXX XXXX 、手機: 09XX XXX XXX"
+      "placeholder": "市話: 0X XXXX XXXX 、手機: 09XX XXX XXX",
+      "title": "市話: 0X XXXX XXXX 、手機: 09XX XXX XXX"
     },
     "google_map": {
       "type": "url",
-      "placeholder": "https://goo.gl/maps/....."
+      "placeholder": "https://goo.gl/maps/.....",
+      "title": "https://goo.gl/maps/.....",
+      "pattern": "https?://goo\\.gl/maps/[a-zA-Z0-9]+"
     },
     "rating": {
       "type": "number",
@@ -41,7 +46,7 @@
       "type": "text",
       "maxlength": "50",
       "placeholder": "上限50字",
-      "pattern": "\\s*[^\\s]+\\s*"
+      "pattern": ".*[^\\s]+.*"
     },
     "name_en": {
       "type": "text",
@@ -52,11 +57,11 @@
       "type": "text",
       "maxlength": "20",
       "placeholder": "上限20字",
-      "pattern": "\\s*[^\\s]+\\s*"
+      "pattern": ".*[^\\s]+.*"
     },
     "location": {
       "type": "text",
-      "pattern": "\\s*[^\\s]+\\s*"
+      "pattern": ".*[^\\s]+.*"
     }
   }
 }

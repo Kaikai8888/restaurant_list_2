@@ -27,11 +27,12 @@ router.post('/', (req, res) => {
       if (category.length === 0) {
         Category.create({ name: input.category })
           .then(category => createNewRestaurant(res, input, category))
-          .catch(error => console.error(error))
+          .catch(error => res.send(getFormErrorMessage(error)))
       } else {
         createNewRestaurant(res, input, category[0])
       }
     })
+    .catch(error => console.error(error))
 })
 
 //detail page
@@ -69,13 +70,12 @@ router.put('/:id', (req, res) => {
       if (category.length === 0) {
         Category.create({ name: input.category })
           .then(category => editRestaurant(res, input, category, id))
-          .catch(error => console.error(error))
+          .catch(error => res.send(getFormErrorMessage(error)))
       } else {
         editRestaurant(res, input, category[0], id)
       }
-
-
     })
+    .catch(error => console.error(error))
 })
 
 function editRestaurant(res, input, category, id) {
