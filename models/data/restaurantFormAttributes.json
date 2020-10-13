@@ -40,7 +40,8 @@
     "name": {
       "type": "text",
       "maxlength": "50",
-      "placeholder": "上限50字"
+      "placeholder": "上限50字",
+      "pattern": "\\s*[^\\s]+\\s*"
     },
     "name_en": {
       "type": "text",
@@ -50,7 +51,12 @@
     "category": {
       "type": "text",
       "maxlength": "20",
-      "placeholder": "上限20字"
+      "placeholder": "上限20字",
+      "pattern": "\\s*[^\\s]+\\s*"
+    },
+    "location": {
+      "type": "text",
+      "pattern": "\\s*[^\\s]+\\s*"
     }
   }
 }
