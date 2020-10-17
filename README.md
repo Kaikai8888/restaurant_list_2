@@ -23,7 +23,7 @@ A web app built by Express.js to help users collect and search for restaurants t
 
   ![新增](./add_restaurant_screenshot.png)
 
-## 環境建置需求
+## Prerequisite
 * Node.js: v10.15.0
 * npm: 6.4.1
 * nodemon: 2.0.4
@@ -34,7 +34,7 @@ A web app built by Express.js to help users collect and search for restaurants t
 * robo 3T: 1.4.1
 * mongoose: 5.10.7
 
-## 使用方式
+## Installation
 1. Enter ` git clone https://github.com/Kaikai8888/restaurant_list_2.git ` in the terminal to download the project folder
 2. Use robo 3T to manipulate mongoDB, create connection to `localhost: 27017`, and create the database,`restaurant-list`
 3. Enter `npm run seed` in the terminal to to run restaurantSeeder.js with nodemon and create seed data
