@@ -38,11 +38,10 @@ header {
   padding: 20px 30px;
 }
 
-.new-edit-form, .login-register-card{
+.new-edit-form {
   margin-top: -180px;
   padding: 30px 50px;
 }
-
 
 .search-bar h2 {
   color: #9b4b4b;
@@ -68,7 +67,7 @@ header {
   align-content: space-between;
 }
 
-.card {
+.data-display-area .card {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
   max-width: 300px;
 }
@@ -96,6 +95,13 @@ header {
   font-size: 3rem;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
+
+/* Login and Register page */
+.login-register-card {
+  margin-top: -180px;
+  max-width: 400px;
+}
+
 
 @media screen and (max-width: 992px) {
   
