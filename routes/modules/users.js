@@ -21,7 +21,6 @@ router.get('/register', (req, res) => {
 
 router.post('/register', (req, res) => {
   const { name, email, password, confirmPassword } = req.body
-  console.log(name, email, password, confirmPassword)
   const registerError = []
   if (!email || !password || !confirmPassword) {
     registerError.push({ message: '請確認是否漏填 Email、密碼 或 確認密碼' })
