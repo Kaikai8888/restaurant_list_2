@@ -1,0 +1,32 @@
+{{#if errorMessage}}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  {{ errorMessage }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{{/if}}
+{{#if successMessage}}
+<div class="alert alert-info alert-dismissible fade show" role="alert">
+  {{ successMessage }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{{/if}}
+{{#if loginError}}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  {{ loginError }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{{/if}}
+{{#each registerError}}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  {{ this.message }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{{/each}}

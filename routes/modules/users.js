@@ -11,8 +11,8 @@ router.get('/login', (req, res) => {
 
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/',
-  failureRedirect: '/users/login'
-  // failureFlash: true
+  failureRedirect: '/users/login',
+  failureFlash: true
 }))
 
 router.get('/register', (req, res) => {
@@ -21,10 +21,21 @@ router.get('/register', (req, res) => {
 
 router.post('/register', (req, res) => {
   const { name, email, password, confirmPassword } = req.body
+  console.log(name, email, password, confirmPassword)
+  const registerError = []
+  if (!email || !password || !confirmPassword) {
+    registerError.push({ message: '請確認是否漏填 Email、密碼 或 確認密碼' })
+  }
+  if (password !== confirmPassword) {
+    registerError.push({ message: '密碼與確認密碼不一致' })
+  }
+  if (registerError.length) return res.render('register', { name, email, password, confirmPassword, registerError })
+
   User.findOne({ email })
     .then(user => {
       if (user) {
-        return res.render('register', { name, email, password, confirmPassword })
+        registerError.push({ message: '這個 Email 已註冊' })
+        return res.render('register', { name, email, password, confirmPassword, registerError })
       } else {
         return bcrypt
           .genSalt(10)
@@ -40,6 +51,7 @@ router.post('/register', (req, res) => {
 
 router.get('/logout', (req, res) => {
   req.logout()
+  req.flash('successMessage', '已成功登出')
   res.redirect('/users/login')
 })
 
