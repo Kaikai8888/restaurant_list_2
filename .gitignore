@@ -12,6 +12,7 @@ Desktop.ini
 /node_modules
 *.log
 *.gz
+.env
 
 # others
 /trial

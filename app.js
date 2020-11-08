@@ -6,6 +6,9 @@ const session = require('express-session')
 
 const router = require('./routes')
 const usePassport = require('./config/passport.js')
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
 require('./config/mongoose.js')
 
 const app = express()
@@ -22,7 +25,7 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 app.use(session({
-  secret: "djsiourni",
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }))
