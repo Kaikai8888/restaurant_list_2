@@ -3,32 +3,31 @@ A web app built by Express.js to help users collect and search for restaurants t
 ![screenshot](./index_page_screenshot.png)
 
 ## Features
-* Register and Login to use the app
+* Create an account to manage restaurant list
+
+* Browse all restaurants on home page
+
+* Click on certain restaurant name or image to check detail info, such as address, phone number and description
+
+* Search restaurants by Chinsese name ,English name or category
+
+* Sort restaurants by name, category or ratings
+
+* Creat or Edit restaurants data
+
+  * Categoric field: search existing categories or creating new one
+    * Click on the input field to expand category dropdown list
+    * The category dropdown list contains category names and numbers of restaurants belong to each category, and is sorted by numbers of restaurants and category name
+    * Enter keywords and the dropdown list will be automatically filtered and show related categories
+    * Users can also directly enter new category, and the system will create new category in the database after form submission and validation
+
+  * When submitted, the form input will go through  client-end and server-end validation before being stored into the database.
+
+* Delete specific restaurant data by clicking on delete button, and a confirm modal will popup before the deletion.
+
+![新增](./add_restaurant_screenshot.png)
 ![login](./login_screenshot.png)
 ![register](./register_screenshot.png)
-
-* Browsing all restaurants on home page
-
-* Clicking on certain restaurant name or image to check detail info, such as address, phone number and description
-
-* Searching restaurants by Chinsese name ,English name or category
-
-* Sorting restaurants by name, category or ratings
-
-* Creating or Editing restaurants data
-
-  * Categoric field: searching existing categories or creating new one
-    * Clicking on the input field to expand category dropdown list
-    * The category dropdown list contains category names and nubmers of restaurants belong to each category, and is sorted by numbers of restaurants and category name
-    * Entering keywords and the dropdown list will be automatically filtered and show related categories
-    * Users can also directly enter new category, and the system will create new category in the database after form submission and validation
-  * When submitted, the form input will go through  client-end and server-end validation before beigning stored into the database.
-
-* Deleting specific restaurant data by clicking on delete button, and  a confirm modal will popup before the deletion.
-
-  ![新增](./add_restaurant_screenshot.png)
-
-
 
 ## Prerequisite
 * Node.js: v10.15.0
