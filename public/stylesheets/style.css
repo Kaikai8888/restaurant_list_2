@@ -20,6 +20,11 @@ header {
   filter: blur(3px);
 }
 
+.bg-translucent-orange {
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  background-color: rgba(252,226,207,0.8);
+}
+
 #search-sort-form label{
   font-weight: 700;
   font-size: 20px;
@@ -29,9 +34,10 @@ header {
   max-width: 680px;
   border-radius: 8px; 
   border: 0;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-  background-color: rgba(252,226,207,0.7);
+
 }
+
+
 
 .search-bar .search-bar-outer {
   margin-top: -60px;
@@ -101,6 +107,8 @@ header {
   margin-top: -180px;
   max-width: 400px;
 }
+
+.login-register-card .car
 
 
 @media screen and (max-width: 992px) {
