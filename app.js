@@ -27,6 +27,9 @@ app.use(session({
   saveUninitialized: true
 }))
 usePassport(app)
+// app.use((req, res) => {
+//   res.locals.isAuthenticated = 
+// })
 app.use(router)
 
 //run web server

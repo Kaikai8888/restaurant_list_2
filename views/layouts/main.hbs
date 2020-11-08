@@ -17,14 +17,15 @@
     <!-- navigation -->
     <nav class="navbar fixed-top navbar-light bg-light">
       <div class="container">
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand mr-auto" href="/">
           <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png"
             width="30" height="30" class="d-inline-block align-top" alt="我的餐廳清單">
           我的餐廳清單
         </a>
         {{#if isIndex}}
-        <a class="btn btn-info" href="/restaurants/new">新增餐廳</a>
+        <a class="btn btn-info mr-2" href="/restaurants/new">新增餐廳</a>
         {{/if}}
+        <a class="btn btn-warning" href="/users/logout">登出</a>
       </div>
     </nav>
 
