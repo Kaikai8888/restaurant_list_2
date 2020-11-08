@@ -9,7 +9,6 @@ const getCategoryName = require('../../models/functions/getCategoryName.js')
 router.get('/', (req, res) => {
   const { keyword, sort } = req.query
   const userId = req.user._id
-  console.log(req.user)
   const regExp = keyword ? new RegExp(`${keyword.trim().toLowerCase()}`) : new RegExp('')
   const sortCondition = generateSortCondition(sort)
 
