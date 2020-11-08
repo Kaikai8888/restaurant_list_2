@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Restaurant = require('../../models/restaurant.js')
 const Category = require('../../models/category.js')
+const User = require('../../models/user.js')
 //other variables
 const formAttributes = require('../../models/data/restaurantFormAttributes.json')
 const properties = Restaurant.schema.paths
@@ -23,15 +24,16 @@ router.get('/new', (req, res) => {
 
 router.post('/', (req, res) => {
   const input = req.body
-  Category.find({ name: input.category })
+  input.userId = req.user._id
+  Category.findOne({ name: input.category })
     .lean()
     .then(category => {
-      if (category.length === 0) {
+      if (!category) {
         Category.create({ name: input.category })
           .then(category => createNewRestaurant(res, input, category))
           .catch(error => res.send(getFormErrorMessage(error)))
       } else {
-        createNewRestaurant(res, input, category[0])
+        createNewRestaurant(res, input, category)
       }
     })
     .catch(error => console.error(error))
@@ -39,8 +41,9 @@ router.post('/', (req, res) => {
 
 //detail page
 router.get('/:id', (req, res) => {
-  const id = req.params.id
-  Restaurant.findById(id)
+  const _id = req.params.id
+  const userId = req.user._id
+  Restaurant.findOne({ _id, userId })
     .populate('category', 'name-_id')
     .lean()
     .then(restaurant => res.render('show', { restaurant: getCategoryName(restaurant)[0] }))
@@ -49,13 +52,14 @@ router.get('/:id', (req, res) => {
 
 //edit restaurant data
 router.get('/:id/edit', (req, res) => {
-  const id = req.params.id
+  const _id = req.params.id
+  const userId = req.user._id
   Category.find()
     .populate('numRestaurants')
     .sort({ name: 'asc' })
     .lean()
     .then(categories => {
-      Restaurant.findById(id)
+      Restaurant.findOne({ _id, userId })
         .populate('category')
         .lean()
         .then(restaurant => {
@@ -68,18 +72,19 @@ router.get('/:id/edit', (req, res) => {
 })
 
 router.put('/:id', (req, res) => {
-  const id = req.params.id
   const input = req.body
-  Category.find({ name: input.category })
+  const _id = req.params.id
+  const userId = req.user._id
+  Category.findOne({ name: input.category })
     .sort({ name: 'asc' })
     .lean()
     .then(category => {
-      if (category.length === 0) {
+      if (!category) {
         Category.create({ name: input.category })
-          .then(category => editRestaurant(res, input, category, id))
+          .then(category => editRestaurant(res, input, category, _id, userId))
           .catch(error => res.send(getFormErrorMessage(error)))
       } else {
-        editRestaurant(res, input, category[0], id)
+        editRestaurant(res, input, category, _id, userId)
       }
     })
     .catch(error => console.error(error))
@@ -89,8 +94,9 @@ router.put('/:id', (req, res) => {
 
 //delete
 router.delete('/:id', (req, res) => {
-  const id = req.params.id
-  return Restaurant.findById(id)
+  const _id = req.params.id
+  const userId = req.user._id
+  return Restaurant.findOne({ _id, userId })
     .then(restaurant => restaurant.remove())
     .then(() => res.redirect('/'))
     .catch(error => console.error(error))
@@ -106,14 +112,14 @@ function createNewRestaurant(res, input, category) {
     .catch(error => res.send(getFormErrorMessage(error)))
 }
 
-function editRestaurant(res, input, category, id) {
-  Restaurant.findById(id)
+function editRestaurant(res, input, category, _id, userId) {
+  Restaurant.findOne({ _id, userId })
     .then(restaurant => {
       input.category = category._id
       Object.assign(restaurant, input)
       return restaurant.save()
     })
-    .then(() => res.redirect(`/restaurants/${id}`))
+    .then(() => res.redirect(`/restaurants/${_id}`))
     .catch(error => {
       console.log(error)
       res.send(getFormErrorMessage(error))
