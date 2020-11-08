@@ -1,7 +1,12 @@
 # Restaurant List
-A web app built by Express.js to help users collect and search for restaurants they like.![screenshot](./index_page_screenshot.png)
+A web app built by Express.js to help users collect and search for restaurants they like.
+![screenshot](./index_page_screenshot.png)
 
 ## Features
+* Register and Login to use the app
+![login](./login_screenshot.png)
+![register](./register_screenshot.png)
+
 * Browsing all restaurants on home page
 
 * Clicking on certain restaurant name or image to check detail info, such as address, phone number and description
@@ -23,6 +28,8 @@ A web app built by Express.js to help users collect and search for restaurants t
 
   ![新增](./add_restaurant_screenshot.png)
 
+
+
 ## Prerequisite
 * Node.js: v10.15.0
 * npm: 6.4.1
@@ -33,11 +40,26 @@ A web app built by Express.js to help users collect and search for restaurants t
 * mongoDB: 4.2.9
 * robo 3T: 1.4.1
 * mongoose: 5.10.7
+* bcryptjs: ^2.4.3
+* connect-flash: 0.1.1
+* dotenv: 8.2.0
+* express-session: 1.17.1
+* passport: 0.4.1
+* passport-facebook: 3.0.0
+* passport-local: 1.0.0
+
 
 ## Installation
 1. Enter ` git clone https://github.com/Kaikai8888/restaurant_list_2.git ` in the terminal to download the project folder
 2. Use robo 3T to manipulate mongoDB, create connection to `localhost: 27017`, and create the database,`restaurant-list`
 3. Enter `npm run seed` in the terminal to to run restaurantSeeder.js with nodemon and create seed data
 4. Enter `npm run dev` in the terminal to run app.js with nodemon to set up database connection and start local server 
-5. Enter http://localhost:3000 in the brower and enter the website
+5. Enter http://localhost:3000 in the browser and enter the website
+6. User following demo account to login:
+  * user1: 
+    - email: user1@example.com
+    - password: 12345678
+  * user2:
+    - email: user2@example.com
+    - password: 12345678
 
