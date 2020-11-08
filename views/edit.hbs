@@ -2,7 +2,7 @@
   <h3 class="mb-4 text-center" style="letter-spacing: 2px;font-weight: 900;">編輯餐廳</h3>
   <form action="/restaurants/{{ restaurant._id }}?_method=PUT" method="POST">
     {{#each properties}}
-    {{#unless (or (eq @key '_id') (eq @key '__v'))}}
+    {{#unless (or (eq @key '_id') (eq @key '__v') (eq @key 'userId'))}}
     <div class="form-group row align-items-center">
       <label for="{{ @key }}" class="col-sm-4 col-form-label" style="font-size: 20px;font-weight: 700;">
         {{getByKey ../formAttributes.chinese @key}}

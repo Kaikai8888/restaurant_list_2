@@ -33,7 +33,8 @@ const restaurantSchema = new Schema({
       message: (property) => 'Rating can only be represented with one decimal place',
     }
   },
-  description: { type: String, required: false, maxlength: 500 }
+  description: { type: String, required: false, maxlength: 500 },
+  userId: { type: Schema.Types.ObjectId, ref: 'User', required: true }
 })
 
 
