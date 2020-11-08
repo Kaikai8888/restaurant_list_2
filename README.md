@@ -1,5 +1,5 @@
 # Restaurant List
-A web app built by Express.js to help users manage favorate restaruants.
+A web app built by Express.js to help users manage favorite restaruants.
 ![screenshot](./index_page_screenshot.png)
 
 ## Features
