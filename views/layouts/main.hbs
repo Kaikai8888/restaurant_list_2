@@ -27,6 +27,8 @@
         {{/if}}
         {{#if isAuthenticated}}
         <a class="btn btn-warning ml-2" href="/users/logout">登出</a>
+        {{else}}
+        <a class="btn btn-info ml-2" href="/users/login">登入</a>
         {{/if}}
       </div>
     </nav>
