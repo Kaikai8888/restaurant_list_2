@@ -38,7 +38,7 @@ header {
   padding: 20px 30px;
 }
 
-.new-edit-form {
+.new-edit-form, .login-register-card{
   margin-top: -180px;
   padding: 30px 50px;
 }
