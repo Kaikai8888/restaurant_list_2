@@ -1,28 +1,27 @@
 <div class="container login-register-card" id="register-page">
   <div class="row">
     <div class="card card-body m-auto mt-5">
-      <h2 class="text-center">Register</h2>
+      <h2 class="text-center">註冊</h2>
       <form action="/users/register" method="POST">
         <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name">
+          <label for="name">名稱</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="輸入名稱">
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email">
+          <input type="email" class="form-control" id="email" name="email" placeholder="輸入Email">
         </div>
         <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password">
+          <label for="password">密碼</label>
+          <input type="password" class="form-control" id="password" name="password" placeholder="輸入密碼">
         </div>
         <div class="form-group">
-          <label for="confirmPassword">Confirm Password</label>
-          <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
-            placeholder="Confirm Password">
+          <label for="confirmPassword">確認密碼</label>
+          <input type="password" class="form-control" id="confirmPassword" name="確認密碼" placeholder="Confirm Password">
         </div>
-        <button class="btn btn-info btn-block" type="submit">Login</button>
+        <button class="btn btn-info btn-block" type="submit">註冊</button>
         <p class="lead mt-4">
-          Already have an account? <a href="/users/login">Login</a>
+          已註冊了嗎? <a href="/users/login">登入</a>
         </p>
       </form>
     </div>
