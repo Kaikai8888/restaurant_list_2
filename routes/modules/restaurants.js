@@ -31,12 +31,14 @@ router.post('/', (req, res) => {
       if (!category) {
         Category.create({ name: input.category })
           .then(category => createNewRestaurant(res, input, category))
-          .catch(error => res.send(getFormErrorMessage(error)))
       } else {
         createNewRestaurant(res, input, category)
       }
     })
-    .catch(error => console.error(error))
+    .catch(error => {
+      console.log(error)
+      res.send(getFormErrorMessage(error))
+    })
 })
 
 //detail page
@@ -64,9 +66,8 @@ router.get('/:id/edit', (req, res) => {
         .lean()
         .then(restaurant => {
           categories.sort(sortByNumRestaurants)
-          res.render('edit', { restaurant, properties, formAttributes, categories })
+          return res.render('edit', { restaurant, properties, formAttributes, categories })
         })
-        .catch(error => console.error(error))
     })
     .catch(error => console.error(error))
 })
@@ -82,12 +83,14 @@ router.put('/:id', (req, res) => {
       if (!category) {
         Category.create({ name: input.category })
           .then(category => editRestaurant(res, input, category, _id, userId))
-          .catch(error => res.send(getFormErrorMessage(error)))
       } else {
         editRestaurant(res, input, category, _id, userId)
       }
     })
-    .catch(error => console.error(error))
+    .catch(error => {
+      console.log(error)
+      res.send(getFormErrorMessage(error))
+    })
 })
 
 
@@ -108,8 +111,7 @@ module.exports = router
 function createNewRestaurant(res, input, category) {
   input.category = category._id
   Restaurant.create(input)
-    .then(res.redirect('/'))
-    .catch(error => res.send(getFormErrorMessage(error)))
+    .then(() => res.redirect('/'))
 }
 
 function editRestaurant(res, input, category, _id, userId) {
@@ -120,10 +122,6 @@ function editRestaurant(res, input, category, _id, userId) {
       return restaurant.save()
     })
     .then(() => res.redirect(`/restaurants/${_id}`))
-    .catch(error => {
-      console.log(error)
-      res.send(getFormErrorMessage(error))
-    })
 }
 
 function sortByNumRestaurants(a, b) {
