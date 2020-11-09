@@ -6,7 +6,7 @@ const restaurantSchema = new Schema({
     match: [/.*[^\s]+.*/, 'Please input at least one non-space character.']
   },
   name_en: { type: String, required: false },
-  category: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'Category' },
+  category: { type: Schema.Types.ObjectId, required: true, ref: 'Category', index: true },
   image: {
     type: String, required: true,
     match: [/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/, 'Invalid image url']
@@ -34,7 +34,7 @@ const restaurantSchema = new Schema({
     }
   },
   description: { type: String, required: false, maxlength: 500 },
-  userId: { type: Schema.Types.ObjectId, ref: 'User', required: true }
+  userId: { type: Schema.Types.ObjectId, ref: 'User', required: true, index: true }
 })
 
 
