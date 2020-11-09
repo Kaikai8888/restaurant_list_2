@@ -19,7 +19,7 @@ router.get('/register', (req, res) => {
   res.render('register')
 })
 
-router.post('/register', (req, res) => {
+router.post('/register', (req, res, next) => {
   const { name, email, password, confirmPassword } = req.body
   const registerError = []
   if (!email || !password || !confirmPassword) {
@@ -40,16 +40,15 @@ router.post('/register', (req, res) => {
           .genSalt(10)
           .then(salt => bcrypt.hash(password, salt))
           .then(hash => User
-            .create({ name, email, password: hash })
-            .then(() => {
-              req.flash('successMessage', '已成功註冊，歡迎登入使用')
-              return res.redirect('/users/login')
-            })
-            .catch((error) => console.log(error)))
+            .create({ name, email, password: hash }))
+          .then(() => next())
       }
     })
     .catch((error) => console.log(error))
-})
+}, passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: '/users/login'
+}))
 
 router.get('/logout', (req, res) => {
   req.logout()
