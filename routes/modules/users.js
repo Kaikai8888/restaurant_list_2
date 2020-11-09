@@ -25,9 +25,15 @@ router.post('/register', (req, res, next) => {
   if (!email || !password || !confirmPassword) {
     registerError.push({ message: '請確認是否漏填 Email、密碼 或 確認密碼' })
   }
+
   if (password !== confirmPassword) {
     registerError.push({ message: '密碼與確認密碼不一致' })
   }
+
+  if (password.length < 8 || password.length > 12) {
+    registerError.push({ message: '密碼長度須為8~12個字' })
+  }
+
   if (registerError.length) return res.render('register', { name, email, password, confirmPassword, registerError })
 
   User.findOne({ email })
