@@ -1,15 +1,17 @@
 # Restaurant List
-A web app built by Express.js to help users manage favorite restaruants.
+A web app built by Express.js to help users manage favorite restaurants.
 ![screenshot](./screenshot/index_page_screenshot.png)
 
 ## Features
 * Create an account to manage restaurant list
+  * allow Facebook login
+  * password length is limited to 8 to 12 characters
 
 * Browse all restaurants on home page
 
 * Click on certain restaurant name or image to check detail info, such as address, phone number and description
 
-* Search restaurants by Chinsese name ,English name or category
+* Search restaurants by Chinese name ,English name or category
 
 * Sort restaurants by name, category or ratings
 
