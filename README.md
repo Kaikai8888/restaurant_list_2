@@ -1,6 +1,6 @@
 # Restaurant List
 A web app built by Express.js to help users manage favorite restaruants.
-![screenshot](./index_page_screenshot.png)
+![screenshot](./screenshot/index_page_screenshot.png)
 
 ## Features
 * Create an account to manage restaurant list
@@ -25,9 +25,9 @@ A web app built by Express.js to help users manage favorite restaruants.
 
 * Delete specific restaurant data by clicking on delete button, and a confirm modal will popup before the deletion.
 
-![新增](./add_restaurant_screenshot.png)
-![login](./login_screenshot.png)
-![register](./register_screenshot.png)
+![新增](./screenshot/add_restaurant_screenshot.png)
+![login](./screenshot/login_screenshot.png)
+![register](./screenshot/register_screenshot.png)
 
 ## Prerequisite
 * Node.js: v10.15.0
