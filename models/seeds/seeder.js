@@ -12,21 +12,27 @@ categorySeeds = [...categorySeeds].map(category => { return { name: category } }
 
 db.once('open', () => {
   Promise.all([
-    Category.insertMany(categorySeeds),
-    Promise.all(userSeeds.results.map(user =>
-      bcrypt.genSalt(10)
-        .then(salt => bcrypt.hash(user.password, salt))
-        .then(hash => {
-          user.password = hash
-          return User.create(user)
-        })
-    ))
+    Category.deleteMany(),
+    Restaurant.deleteMany(),
+    User.deleteMany()
   ])
+    .then(() => Promise.all([
+      Category.insertMany(categorySeeds),
+      Promise.all(userSeeds.results.map(user =>
+        bcrypt.genSalt(10)
+          .then(salt => bcrypt.hash(user.password, salt))
+          .then(hash => {
+            user.password = hash
+            return User.create(user)
+          })
+      ))
+    ]))
     .then(results => {
       const [categories, users] = results
       restaurantSeeds.results.forEach(restaurant => {
         restaurant.category = categories.find(category => category.name === restaurant.category)._id
-        restaurant.userId = users.find(user => user.email === restaurant.userId)._id
+        restaurant.userId = users.find(user => user.email === restaurant.userEmail)._id
+        delete restaurant.userEmail
         delete restaurant.id
       })
       return Restaurant.insertMany(restaurantSeeds.results)

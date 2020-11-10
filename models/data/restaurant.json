@@ -11,7 +11,7 @@
       "google_map": "https://goo.gl/maps/BJdmLuVdDbw",
       "rating": 4.1,
       "description": "沙巴巴批塔是台灣第一家純手工批塔專賣店,只選用最新鮮的頂級原料,以及道地的中東家傳配方。",
-      "userId": "user1@example.com"
+      "userEmail": "user1@example.com"
     },
     {
       "id": 2,
@@ -24,7 +24,7 @@
       "google_map": "https://goo.gl/maps/cUJEmFSRKyH2",
       "rating": 4.3,
       "description": "鰻魚、鰻魚飯、真空鰻魚",
-      "userId": "user1@example.com"
+      "userEmail": "user1@example.com"
     },
     {
       "id": 3,
@@ -37,7 +37,7 @@
       "google_map": "https://goo.gl/maps/bnZKC2YjYZp",
       "rating": 4.2,
       "description": "以頂級食材與料理技法完美呈現各類經典義式料理，獅頭造型烤爐現作pizza與開放式廚房現作龍蝦茄汁雞蛋銀絲麵是不可錯過的必嚐推薦！夜間國際級樂團的熱力演出，感受活力四射的現場魅力。",
-      "userId": "user1@example.com"
+      "userEmail": "user1@example.com"
     },
     {
       "id": 4,
@@ -50,7 +50,7 @@
       "google_map": "https://goo.gl/maps/6Lq7U2ahp152",
       "rating": 4.2,
       "description": "從味蕾開始，重拾美味感動。艾朋牛排餐酒館對高級料理的細選珍饌堅持，更勇於翻脫新意，要以平易親人的親切風格，同時不失料理獨家精髓，成功打動每吋挑剔味蕾，讓每位顧客享用鮮嫩Steak牛排風采，咀嚼Pasta義大利麵層次風味！",
-      "userId": "user2@example.com"
+      "userEmail": "user2@example.com"
     },
     {
       "id": 5,
@@ -63,7 +63,7 @@
       "google_map": "https://goo.gl/maps/rqzbVyrR9Gp",
       "rating": 4.7,
       "description": "我們的披薩師傅從倫敦帶來別於一般口味的經典義大利披薩，而且披薩麵團至少發酵24小時。同時我們也窯烤麵包及甜點，但披薩才是GUSTO最強項。我們製做的每一份餐點，都充滿飽飽的口味及香氣。除此之外，遵循純手工及傳統方式製作是我們的堅持。",
-      "userId": "user2@example.com"
+      "userEmail": "user2@example.com"
     },
     {
       "id": 6,
@@ -76,7 +76,7 @@
       "google_map": "https://goo.gl/maps/rFLNu87ruBM2",
       "rating": 4.3,
       "description": "紅酒吧，現代創意料理，開胃小館。提供純素選擇，提供無麩質選擇，提供素食選擇。",
-      "userId": "user2@example.com"
+      "userEmail": "user2@example.com"
     }
   ]
 }
